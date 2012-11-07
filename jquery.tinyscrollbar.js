@@ -49,9 +49,12 @@
     {
         var oSelf       = this
         ,   oWrapper    = root
-        ,   oViewport   = { obj: $( '.viewport', root ) }
-        ,   oContent    = { obj: $( '.overview', root ) }
-        ,   oScrollbar  = { obj: $( '.scrollbar', root ) }
+        // ,   oViewport   = { obj: $( '.viewport', root ) }
+        // ,   oContent    = { obj: $( '.overview', root ) }
+        // ,   oScrollbar  = { obj: $( '.scrollbar', root ) }
+        ,   oViewport   = { obj: root.children( '.viewport' ) }
+        ,   oContent    = { obj: oViewport.obj.children( '.overview' ) }
+        ,   oScrollbar  = { obj: root.children( '.scrollbar' ) }
         ,   oTrack      = { obj: $( '.track', oScrollbar.obj ) }
         ,   oThumb      = { obj: $( '.thumb', oScrollbar.obj ) }
         ,   sAxis       = options.axis === 'x'
@@ -177,6 +180,7 @@
                     oEvent = $.event.fix( oEvent );
                     oEvent.preventDefault();
                 }
+                event.stopPropagation();
             }
         }
 
